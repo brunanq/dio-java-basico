@@ -1,17 +1,19 @@
 public class SmartTV {
     boolean ligada = false;
     int canal = 1;
-    int volume = 15;
+    int volume = 1;
 
     public void mudarCanal(int canal) {
-        this.canal = canal;
+        if (canal <= 0){
+            System.out.println("~ nada acontece ~");
+        } else {
+            this.canal = canal;
+        }
     }
 
     public int abaixarCanal(){
-        if (!ligada){
-            System.out.println("TV está desligada.");
-        } else if (this.canal == 1){
-            System.out.println("~ nada acontece ~");
+        if (!ligada || (canal == 1)){
+            System.out.println("~nada acontece~");
         } else {
             this.canal--;
         }
@@ -21,8 +23,6 @@ public class SmartTV {
     public int aumentarCanal(){
         if (!ligada){
             System.out.println("TV está desligada.");
-        } else if (this.canal == 1){
-            System.out.println("~ nada acontece ~");
         } else {
             this.canal++;
         }
@@ -34,14 +34,11 @@ public class SmartTV {
     }
 
     public void desligarTV(){
-        if (!ligada){
-            System.out.println("~ nada acontece ~");
-        } else {
             this.ligada = false;
         }
-    }
+    
 
-    public int aumentarVolume() throws Exception {
+    public int aumentarVolume(){
         if (!ligada) {
             System.out.println("TV está desligada.");
         } else {
@@ -51,10 +48,10 @@ public class SmartTV {
     }
 
     public int abaixarVolume(){
-        if (ligada) {
-            this.volume--;
+        if ((!ligada)|| (volume == 0)) {
+            System.out.println("~nada acontece~");
         } else {
-            System.out.println("TV está desligada.");
+            this.volume--;
         }
         return this.volume;
     }
